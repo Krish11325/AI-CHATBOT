@@ -1,0 +1,6 @@
+{
+  "name": "StudyMate AI",
+  "description": "Personal AI Tutor & Study Assistant for Mathematics and Physics with step-by-step problem solving, Socratic hints, formula sheet, quizzes, and progress analytics.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

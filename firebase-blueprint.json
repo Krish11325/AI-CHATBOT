@@ -1,0 +1,132 @@
+{
+  "entities": {
+    "User": {
+      "title": "User Profile",
+      "description": "User account profile information",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string", "maxLength": 100 },
+        "email": { "type": "string", "maxLength": 150 },
+        "profileImage": { "type": "string", "maxLength": 500 },
+        "educationLevel": { "type": "string", "maxLength": 100 },
+        "preferredLanguage": { "type": "string", "maxLength": 20 },
+        "dailyStudyGoal": { "type": "number" },
+        "selectedSubjects": { "type": "array" },
+        "createdAt": { "type": "string", "maxLength": 50 },
+        "lastLoginAt": { "type": "string", "maxLength": 50 }
+      },
+      "required": ["name", "email"]
+    },
+    "StudyProgress": {
+      "title": "Study Progress",
+      "description": "Topic specific study progress tracking",
+      "type": "object",
+      "properties": {
+        "subject": { "type": "string", "maxLength": 50 },
+        "chapter": { "type": "string", "maxLength": 100 },
+        "topic": { "type": "string", "maxLength": 100 },
+        "progressPercentage": { "type": "number" },
+        "questionsSolved": { "type": "number" },
+        "correctAnswers": { "type": "number" },
+        "lastStudiedAt": { "type": "string", "maxLength": 50 }
+      },
+      "required": ["subject", "chapter", "topic"]
+    },
+    "QuizResult": {
+      "title": "Quiz Result",
+      "description": "Completed quiz scores and breakdown",
+      "type": "object",
+      "properties": {
+        "subject": { "type": "string", "maxLength": 50 },
+        "topic": { "type": "string", "maxLength": 100 },
+        "difficulty": { "type": "string", "maxLength": 30 },
+        "totalQuestions": { "type": "number" },
+        "correctAnswers": { "type": "number" },
+        "score": { "type": "number" },
+        "completedAt": { "type": "string", "maxLength": 50 }
+      },
+      "required": ["subject", "topic", "score"]
+    },
+    "Note": {
+      "title": "Study Note",
+      "description": "Student created study notes",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string", "maxLength": 200 },
+        "content": { "type": "string", "maxLength": 10000 },
+        "subject": { "type": "string", "maxLength": 50 },
+        "topic": { "type": "string", "maxLength": 100 },
+        "createdAt": { "type": "string", "maxLength": 50 },
+        "updatedAt": { "type": "string", "maxLength": 50 }
+      },
+      "required": ["title", "content"]
+    },
+    "Bookmark": {
+      "title": "Bookmark",
+      "description": "Saved formula or study material bookmark",
+      "type": "object",
+      "properties": {
+        "type": { "type": "string", "maxLength": 50 },
+        "title": { "type": "string", "maxLength": 200 },
+        "content": { "type": "string", "maxLength": 5000 },
+        "subject": { "type": "string", "maxLength": 50 },
+        "createdAt": { "type": "string", "maxLength": 50 }
+      },
+      "required": ["title", "type"]
+    },
+    "Conversation": {
+      "title": "AI Tutor Conversation",
+      "description": "AI Tutor session metadata",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string", "maxLength": 200 },
+        "subject": { "type": "string", "maxLength": 50 },
+        "createdAt": { "type": "string", "maxLength": 50 },
+        "updatedAt": { "type": "string", "maxLength": 50 }
+      },
+      "required": ["title"]
+    },
+    "Message": {
+      "title": "Conversation Message",
+      "description": "Chat message inside AI conversation",
+      "type": "object",
+      "properties": {
+        "role": { "type": "string", "maxLength": 20 },
+        "content": { "type": "string", "maxLength": 10000 },
+        "imageUrl": { "type": "string", "maxLength": 1000 },
+        "createdAt": { "type": "string", "maxLength": 50 }
+      },
+      "required": ["role", "content"]
+    }
+  },
+  "firestore": {
+    "/users/{uid}": {
+      "schema": "User",
+      "description": "Root user profile document"
+    },
+    "/users/{uid}/studyProgress/{topicId}": {
+      "schema": "StudyProgress",
+      "description": "Topic study progress records"
+    },
+    "/users/{uid}/quizResults/{quizId}": {
+      "schema": "QuizResult",
+      "description": "Quiz completion scores"
+    },
+    "/users/{uid}/notes/{noteId}": {
+      "schema": "Note",
+      "description": "User notes"
+    },
+    "/users/{uid}/bookmarks/{bookmarkId}": {
+      "schema": "Bookmark",
+      "description": "Saved formula and material bookmarks"
+    },
+    "/users/{uid}/conversations/{conversationId}": {
+      "schema": "Conversation",
+      "description": "Chat conversations"
+    },
+    "/users/{uid}/conversations/{conversationId}/messages/{messageId}": {
+      "schema": "Message",
+      "description": "Chat conversation messages"
+    }
+  }
+}

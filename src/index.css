@@ -1,0 +1,63 @@
+@import "tailwindcss";
+
+@theme {
+  --color-sand-primary: #D8C3A5;
+  --color-sand-light: #E8DCC8;
+  --color-sand-cream: #F7F2E8;
+  --color-sand-white: #FCFAF5;
+  --color-sand-deep: #3B3028;
+  --color-sand-dark: #29231F;
+  --color-sand-muted: #75685C;
+  --color-sand-terracotta: #B9785F;
+  --color-sand-sage: #87917A;
+
+  /* Dark mode palette */
+  --color-sand-darkbg: #211C18;
+  --color-sand-darkcard: #302822;
+  --color-sand-darkborder: #423730;
+  --color-sand-darktext: #F5EBDD;
+  --color-sand-darksubtext: #BFB2A4;
+  --color-sand-darkaccent: #C99A7B;
+}
+
+@layer base {
+  body {
+    background-color: #F7F2E8;
+    color: #3B3028;
+    font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+
+  .dark body {
+    background-color: #211C18;
+    color: #F5EBDD;
+  }
+}
+
+/* Custom scrollbars in sand theme */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #D8C3A5;
+  border-radius: 9999px;
+}
+
+.dark ::webkit-scrollbar-thumb {
+  background: #423730;
+}
+
+/* Simulated Fullscreen Fallback */
+body.simulated-fullscreen {
+  position: fixed !important;
+  inset: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  z-index: 99999 !important;
+  overflow-y: auto !important;
+}
